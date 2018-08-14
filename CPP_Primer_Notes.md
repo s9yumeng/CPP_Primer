@@ -103,3 +103,5 @@ The program is not legal, the error message is:
 The output operator expect here an *ostream* object as left-hand operand.
 
 ## 1.3 A Word about Comments
+
+Although the compiler ignores comments, readers of our code do not. Pro- grammers tend to believe comments even when other parts of the system docu- mentation are out of date. An incorrect comment is worse than no comment at all because it may mislead the reader. When you change your code, be sure to update the comments, too!
