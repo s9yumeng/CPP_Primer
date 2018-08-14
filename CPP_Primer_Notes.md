@@ -23,7 +23,7 @@ Most of the examples in this book use the iostream library. Fundamental to the i
 
 #### Standard Input and Output Objects
 #### A Program That Uses the IO Library
-#### Writing to a Stream
+#### Writing to a Steam
 #### Using Names from the Standard Library
 #### Reading from a Stream
 #### Completing the Program
@@ -33,7 +33,7 @@ The library defines versions of the input and output operators that handle opera
 
 Note: When we read a stream statement, it is just like a foldering of the line of the code.
 
-``` 
+```c++
 #include <iostream>
 int main()
 {
@@ -44,7 +44,7 @@ int main()
 
 #### Exercise 1.4: Our program used the addition operator, +, to add two numbers. Write a program that uses the multiplication operator, *, to print the product instead.
 
-```
+```c++
 #include <iostream>
 int main()
 {
@@ -56,3 +56,50 @@ int main()
     return 0;
 }
 ```
+
+#### Exercise 1.5: We wrote the output in one large statement. Rewrite the program to use a separate statement to print each operand.
+
+```c++
+#include <iostream>
+int main()
+{
+    std::cout << "Enter two numbers:";
+    std::cout << std::endl;
+    int v1 = 0, v2 = 0;
+    std::cin >> v1;
+    std::cin >> v2;
+    std::cout << "The sum of ";
+    std::cout << v1;
+    std::cout << " and ";
+    std::cout << v2;
+    std::cout << " is ";
+    std::cout << v1 + v2;
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+#### Exercise 1.6: Explain whether the following program fragment is legal.
+
+```c++
+std::cout << "The sum of " << v1; << " and " << v2;
+             << " is " << v1 + v2 << std::endl;
+```
+
+#### If the program is legal, what does it do? If the program is not legal, why not? How would you fix it?
+
+The program is not legal, the error message is:
+> CPP_Primer_Notes.cpp:7:39: error: expected expression
+```c++
+    std::cout << "The sum of " << v1; << " and " << v2;
+                                      ^
+```
+> CPP_Primer_Notes.cpp:8:14: error: expected expression
+```c++
+             << " is " << v1 + v2 << std::endl;
+             ^                                  ^
+``` 
+
+The output operator expect here an *ostream* object as left-hand operand.
+
+## 1.3 A Word about Comments
