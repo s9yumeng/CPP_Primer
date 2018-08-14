@@ -105,3 +105,34 @@ The output operator expect here an *ostream* object as left-hand operand.
 ## 1.3 A Word about Comments
 
 Although the compiler ignores comments, readers of our code do not. Pro- grammers tend to believe comments even when other parts of the system docu- mentation are out of date. An incorrect comment is worse than no comment at all because it may mislead the reader. When you change your code, be sure to update the comments, too!
+
+#### Kinds of Comments in C++
+#### Comment Pairs Do Not Nest
+
+#### Exercise 1.7: Compile a program that has incorrectly nested comments.
+
+#### Exercise 1.8: Indicate which, if any, of the following output statements are legal:
+
+```c++
+std::cout << "/*";
+std::cout << "*/";
+std::cout << /* "*/" */;
+std::cout << /* "*/" /* "/*" */;
+```
+
+Line 3 does not work, the error message:
+
+`clang++ -Wall CPP_Primer_Notes.cpp -o check.out`
+
+```
+CPP_Primer_Notes.cpp:4:23: warning: missing terminating '"' character
+      [-Winvalid-pp-token]
+   std::cout << /* "*/" */;
+                      ^
+CPP_Primer_Notes.cpp:4:23: error: expected expression
+1 warning and 1 error generated.
+```
+
+## 1.4 Flow of Control
+
+### 1.4.1 The `while` Statement
