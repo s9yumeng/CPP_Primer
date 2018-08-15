@@ -136,3 +136,77 @@ CPP_Primer_Notes.cpp:4:23: error: expected expression
 ## 1.4 Flow of Control
 
 ### 1.4.1 The `while` Statement
+
+A block is a sequence of zero or more statements enclosed by curly braces. 
+
+#### Exercise 1.9: Write a program that uses a while to sum the numbers from 50 to 100.
+
+```c++
+#include <iostream>
+int main()
+{
+    int sum = 0, val = 50;
+    // keep executing the while as long as 
+    // val is less than or equal to 10
+    while (val <= 100)
+    {
+        sum += val; // assigns sum + val to sum
+        ++val; // add 1 to val
+    }
+    std::cout << "Sum of 50 to 100 inclusive is "
+                << sum << std::endl;
+    return 0;
+}
+```
+
+#### Exercise 1.10: In addition to the ++ operator that adds 1 to its operand, there is a decrement operator (--) that subtracts 1. Use the decrement operator to write a while that prints the numbers from ten down to zero.
+
+```c++
+#include <iostream>
+int main()
+{
+    int val = 10;
+
+    while (val >= 0)
+    {
+        std::cout << val << " ";
+        --val;
+    }
+
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+#### Exercise 1.11: Write a program that prompts the user for two integers. Print each number in the range specified by those two integers.
+
+```c++
+#include <iostream>
+int main()
+{
+    std::cout << "Enter two numbers:" << std::endl;
+
+    int first = 0, second = 0;
+
+    std::cin >> first >> second;
+
+    if(first > second)
+    {
+        int temp = first;
+        first = second;
+        second = temp;
+    }
+
+    while (first <= second)
+    {
+        std::cout << first << " ";
+        ++first;
+    }
+
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+### 1.4.2 The for Statement
+
