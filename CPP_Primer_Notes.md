@@ -231,3 +231,119 @@ int main()
 ```
 
 The for loop calculate the sum of the numbers from -100 to 100 inclusive. The final value of sum is obviously 0.
+
+#### Exercise 1.13: Rewrite the first two exercises from § 1.4.1 (p. 13) using for loops.
+
+```c++
+#include <iostream>
+int main()
+{
+    int sum = 0;
+    for(int i = 50; i < 101; i++)
+    {
+        sum += i;
+    }
+    std::cout << sum << std::endl;
+    return 0;
+}
+```
+
+```c++
+#include <iostream>
+int main()
+{
+    for(int i = 10; i > -1; i--)
+    {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+#### Exercise 1.14: Compare and contrast the loops that used a for with those using a while. Are there advantages or disadvantages to using either form?
+
+`for` has a scope where you can define temporary variables and used inside loop.
+
+`while` is simple and appropriate for situations where the loop time is unknown before the loop.
+
+#### Exercise 1.15: Write programs that contain the common errors discussed in the box on page 16. Familiarize yourself with the messages the compiler generates.
+
+### 1.4.3 Reading an Unknown Number of Inputs
+
+```c++
+#include <iostream>
+int main()
+{
+    int sum = 0, value =0;
+    // read until end-of-file, 
+    // calculating a running total of all values read 
+    while (std::cin >> value)
+        sum += value; // equivalent to sum = sum + value
+    std::cout << "Sum is: " << sum << std::endl;
+    return 0;
+}
+```
+
+> That expression reads the next number from the standard input and stores that number in value. The input operator (§ 1.2, p. 8) returns its left operand, which in this case is `std::cin`. This condition, therefore, tests `std::cin`.
+
+> When we use an istream as a condition, the effect is to test the state of the stream. If the stream is valid —- that is, if the stream hasn’t encountered an error —- then the test succeeds. An istream becomes invalid when we hit end-of-file or encounter an invalid input, such as reading a value that is not an integer. An istream that is in an invalid state will cause the condition to yield false.
+
+There are three points here should be mentioned:
+
+1. We say istream here refers to an object of the type istream.
+2. The reason why reading a value that is not an integer can make the state of the istream become invalid is that, `std::cin >> value` and variable value has the type int, so we suppose to provide only integer values to it.
+3. Hit end-of-file here means that the user has hit ^D on the command line to send a EOF signal to the istream.
+
+#### Entering an end-of-file from the keyboard
+#### Compilation revisited
+1. Syntax errors
+2. Type errors
+3. Declaration errors
+
+### 1.4.4 The if Statement
+
+Like most languages, C++ provides an **if statement** that supports conditional execution. 
+
+```c++
+#include <iostream>
+int main()
+{
+    // currVal is the number we're counting;
+    // we'll read new values into val
+    int currVal = 0, val = 0;
+
+    // read first number 
+    // and ensure that we have data to process
+    if (std::cin >> currVal)
+    {
+        // store the count for the current value
+        // we're processing
+        int cnt = 1;
+
+        // read the remaining numbers
+        while (std::cin >> val)
+        {
+            // if the values are the same
+            // add 1 to cnt
+            if (val == currVal)
+                ++cnt;
+            // otherwise, print the count
+            // for the previous value
+            else
+            {
+                std::cout << currVal << " occurs "
+                            << cnt << " times" << std::endl;
+                currVal = val;
+                cnt = 1;
+            }
+        }   // while loop ends here
+        // remember to print the count for the last value
+        // in the file
+        std::cout << currVal << " occurs "
+                    << cnt << " times" << std::endl;
+    }   // outermost if statement ends here
+    return 0;
+}
+```
+
