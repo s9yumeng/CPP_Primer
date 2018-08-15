@@ -1,14 +1,9 @@
 #include <iostream>
 int main()
 {
-    int val = 10;
-
-    while (val >= 0)
-    {
-        std::cout << val << " ";
-        --val;
-    }
-
-    std::cout << std::endl;
+    int sum = 0;
+    for (int i = -100; i <= 100; ++i)
+        sum += i;
+    std::cout << sum << std::endl;
     return 0;
 }

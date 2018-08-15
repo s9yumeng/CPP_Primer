@@ -210,3 +210,24 @@ int main()
 
 ### 1.4.2 The for Statement
 
+#### Exercise 1.12: What does the following for loop do? What is the final value of sum?
+
+```c++
+int sum = 0;
+for (int i = -100; i <= 100; ++i)
+    sum += i;
+```
+
+```c++
+#include <iostream>
+int main()
+{
+    int sum = 0;
+    for (int i = -100; i <= 100; ++i)
+        sum += i;
+    std::cout << sum << std::endl;
+    return 0;
+}
+```
+
+The for loop calculate the sum of the numbers from -100 to 100 inclusive. The final value of sum is obviously 0.
