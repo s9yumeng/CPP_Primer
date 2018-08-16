@@ -347,3 +347,38 @@ int main()
 }
 ```
 
+#### Exercise 1.17: What happens in the program presented in this section if the input val- ues are all equal? What if there are no duplicated values?
+
+#### Exercise 1.18: Compile and run the program from this section giving it only equal values as input. Run it again giving it values in which no number is repeated.
+
+#### Exercise 1.19: Revise the program you wrote for the exercises in § 1.4.1 (p. 13) that printed a range of numbers so that it handles input in which the first number is smaller than the second.
+
+## 1.5 Introducing Classes
+
+To use a class we need to know three things:
+* What is its name?
+* Where is it defined?
+* What operations does it support?
+
+### 1.5.1 The Sales_item Class
+
+To use a class, we need not care about how it is
+implemented. Instead, what we need to know is what operations objects of that
+type can perform.
+
+#### Reading and Writing `Sales_item`s
+#### Adding `Sales_item`s
+
+```c++
+#include <iostream>
+#include "Sales_item.h"
+int main()
+{
+    Sales_item item1, item2;
+    std::cin >> item1 >> item2;
+    // read a pair of transactions
+    std::cout << item1 + item2 << std::endl;
+    // print their sum
+    return 0;
+}
+```
