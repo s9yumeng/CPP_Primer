@@ -3,25 +3,31 @@
 
 int main()
 {
-    Sales_item currValItem, valItem;
-    if (std::cin >> currValItem)
+    Sales_item total; // variable to hold data for the next transaction
+    // read the first transaction and ensure that there are data to process
+    if (std::cin >> total)
     {
-        int cnt = 1;
-        while (std::cin >> valItem)
+        Sales_item trans; // variable to hold the running sum
+        //  read and process the remaining transactions
+        while (std::cin >> trans)
         {
-            if (valItem.isbn() == currValItem.isbn())
-            {
-                currValItem += valItem;
-                ++cnt;
-            }
+            //  if we're still processing the same book
+            if (total.isbn() == trans.isbn())
+                total += trans; //  update the running total
             else
             {
-                std::cout << currValItem << " occurs " << cnt << " time(s) " << std::endl;
-                currValItem = valItem;
-                cnt = 1;
+                //  print results for the previous book
+                std::cout << total << std::endl;
+                total = trans; //  total now refers to the next book
             }
         }
-        std::cout << currValItem << " occurs "<< cnt << " time(s) " << std::endl;
+        std::cout << total << std::endl; // print the last transaction
+    }
+    else
+    {
+        //  no input! warn the user
+        std::cerr << "Nodata?!" << std::endl;
+        return -1; //  indicate failure
     }
     return 0;
 }
