@@ -382,3 +382,160 @@ int main()
     return 0;
 }
 ```
+
+> It’s worth noting how similar this program looks to the one on page 6: We read two inputs and write their sum. What makes this similarity noteworthy is that instead of reading and printing the sum of two integers, we’re reading and printing the sum of two Sales_item objects.
+
+What makes this similarity noteworthy is the unsimilarity (difference) between these two programs.
+
+#### Exercise 1.20: http://www.informit.com/title/0321714113 contains a copy of Sales_item.h in the Chapter 1 code directory. Copy that file to your working directory. Use it to write a program that reads a set of book sales transactions, writing each transaction to the standard output.
+
+```c++
+#include <iostream>
+#include "Sales_item.h"
+int main()
+{
+    Sales_item item;
+
+    while(std::cin >> item)
+    {
+        std::cout << item;
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
+```
+
+#### Exercise 1.21: Write a program that reads two Sales_item objects that have the same ISBN and produces their sum.
+
+```c++
+#include <iostream>
+#include "include/Sales_item.h"
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::cerr;
+
+int main()
+{
+    Sales_item item1, item2;
+    cin >> item1 >> item2;
+    if (item1.isbn() == item2.isbn())
+        cout << item1 + item2 << endl;
+    else
+        cerr << "Different ISBN." << endl;
+}
+```
+
+#### Exercise 1.22: Write a program that reads several transactions for the same ISBN. Write the sum of all the transactions that were read.
+
+The key point of this exercise is that, we would not need to save all the read transactions in a suitable data structure, instead of that, we continuously update the sum variable like an end-recursion.
+
+```c++
+#include <iostream>
+#include "Sales_item.h"
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::cerr;
+using std::string;
+
+int main()
+{
+    Sales_item item;
+    string isbn;
+    Sales_item sum;
+
+    if (cin >> item)
+    {
+        sum = item;
+        isbn = item.isbn();
+
+        while(cin >> item)
+        {
+            if(item.isbn() == sum.isbn())
+            {
+               sum += item;
+            }
+            else
+            {
+                cerr << "Different ISBN." << endl;
+                return 1;
+            }
+        }
+    }
+    else
+    {
+        cerr << "No Data." << endl;
+        return 1;
+    }
+
+    cout << sum << endl;
+    return 0;
+}
+```
+
+### 1.5.2 A First Look at Member Functions
+
+```c++
+#include <iostream>
+#include "Sales_item.h"
+
+int main()
+{
+   Sales_item item1, item2;
+   std::cin >> item1 >> item2;
+   // first check that item1 and item2 represent the same book
+   if (item1.isbn() ==  item2.isbn()) 
+   {
+       std::cout << item1 + item2 << std::endl;
+       return 0;    // indicate success
+   }
+   else
+   {
+        std::cerr << "Data must refer to same ISBN"
+                    << std::endl;
+        return -1;  // indicate failure 
+   }
+}
+```
+
+#### What Is a Member Function?
+
+#### Exercise 1.23: Write a program that reads several transactions and counts how many transactions occur for each ISBN.
+
+```c++
+#include <iostream>
+#include "Sales_item.h"
+
+int main()
+{
+    Sales_item currValItem, valItem;
+    if (std::cin >> currValItem)
+    {
+        int cnt = 1;
+        while (std::cin >> valItem)
+        {
+            if (valItem.isbn() == currValItem.isbn())
+            {
+                currValItem += valItem;
+                ++cnt;
+            }
+            else
+            {
+                std::cout << currValItem << " occurs " << cnt << " time(s) " << std::endl;
+                currValItem = valItem;
+                cnt = 1;
+            }
+        }
+        std::cout << currValItem << " occurs "<< cnt << " time(s) " << std::endl;
+    }
+    return 0;
+}
+```
+
+#### Exercise 1.24: Test the previous program by giving multiple transactions representing multiple ISBNs. The records for each ISBN should be grouped together.
+
+## 1.6 The Bookstore Program
