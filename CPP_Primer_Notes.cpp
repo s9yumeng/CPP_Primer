@@ -26,7 +26,7 @@ int main()
     else
     {
         //  no input! warn the user
-        std::cerr << "Nodata?!" << std::endl;
+        std::cerr << "No data?!" << std::endl;
         return -1; //  indicate failure
     }
     return 0;

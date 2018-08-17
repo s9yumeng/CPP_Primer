@@ -573,9 +573,11 @@ int main()
     else
     {
         //  no input! warn the user
-        std::cerr << "Nodata?!" << std::endl;
+        std::cerr << "No data?!" << std::endl;
         return -1; //  indicate failure
     }
     return 0;
 }
 ```
+
+#### Exercise 1.25: Using the Sales_item.h header from the Web site, compile and exe- cute the bookstore program presented in this section.
