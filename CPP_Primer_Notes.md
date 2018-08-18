@@ -585,3 +585,5 @@ int main()
 # Chapter 2 Variables and Basic Types
 
 ## 2.1 Primitive Built-in Types
+
+### 2.1.1 Arithmetic Types
