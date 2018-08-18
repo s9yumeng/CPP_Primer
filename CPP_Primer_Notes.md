@@ -581,3 +581,7 @@ int main()
 ```
 
 #### Exercise 1.25: Using the Sales_item.h header from the Web site, compile and exe- cute the bookstore program presented in this section.
+
+# Chapter 2 Variables and Basic Types
+
+## 2.1 Primitive Built-in Types
