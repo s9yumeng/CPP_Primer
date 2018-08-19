@@ -580,10 +580,26 @@ int main()
 }
 ```
 
-#### Exercise 1.25: Using the Sales_item.h header from the Web site, compile and exe- cute the bookstore program presented in this section.
+#### Exercise 1.25: Using the Sales_item.h header from the Web site, compile and execute the bookstore program presented in this section.
 
 # Chapter 2 Variables and Basic Types
 
 ## 2.1 Primitive Built-in Types
 
 ### 2.1.1 Arithmetic Types
+Table 2.1: C++: Arithmetic Types
+
+#### Machine-Level Representation of the Built-In Types
+
+#### Signed and Unsigned Types
+> Unlike the other integer types, there are three distinct basic character types: char,signed char,and unsigned char. Inparticular,char is not the same type as signed char. Although there are three character types, there are only two representations: signed and unsigned. The (plain) char type uses one of these representations. Which of the other two character representations is equivalent to char depends on the compiler.
+
+There are three character types in total, but one of them, the char type may be equivalent to either signed char, or unsigned char, depends on the compiler.
+
+**Although there are three character types, there are only two representations: signed and unsigned.**
+
+> The standard does not define how signed types are represented, but does spec- ify that the range should be evenly divided between positive and negative values.
+
+e.g. 1'complement or 2'complement number can be used
+
+#### Advice: Deciding Which Type to Use
