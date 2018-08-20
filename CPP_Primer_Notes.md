@@ -592,14 +592,46 @@ Table 2.1: C++: Arithmetic Types
 #### Machine-Level Representation of the Built-In Types
 
 #### Signed and Unsigned Types
-> Unlike the other integer types, there are three distinct basic character types: char,signed char,and unsigned char. Inparticular,char is not the same type as signed char. Although there are three character types, there are only two representations: signed and unsigned. The (plain) char type uses one of these representations. Which of the other two character representations is equivalent to char depends on the compiler.
+> Unlike the other integer types, there are three distinct basic character types: char,signed char,and unsigned char. Inparticular,char is not the same type as signed char. **Although there are three character types, there are only two representations: signed and unsigned.** The (plain) char type uses one of these representations. Which of the other two character representations is equivalent to char depends on the compiler.
 
 There are three character types in total, but one of them, the char type may be equivalent to either signed char, or unsigned char, depends on the compiler.
-
-**Although there are three character types, there are only two representations: signed and unsigned.**
 
 > The standard does not define how signed types are represented, but does spec- ify that the range should be evenly divided between positive and negative values.
 
 e.g. 1'complement or 2'complement number can be used
 
 #### Advice: Deciding Which Type to Use
+
+#### EXERCISES SECTION 2.1: What are the differences between int, long, long long, and short? Between an unsigned and a signed type? Between a float and a double?
+
+1. the number of bits are different
+   
+  Type        | Minimum Size | Minimum Number Range
+  ------------|--------------|--------------------------------
+  `int`       | 16 bits      | -32767 ~ +32767
+  `long`      | 32 bits      | -2,147,483,647 ~ +2,147,483,647
+  `long long` | 64 bits      | -9.22 * 10^18 ~ +9.22 * 10^18
+  `short`     | 16 bits      | -32767 ~ +32767
+
+2. the interpretations are distinct
+   
+    A signed type represents negative or positive numbers (including zero).
+
+    An unsigned type represents only values greater than or equal to zero.
+
+3. the number of significant digits are not the same
+
+  Type     | Minimum Size
+  ---------|----------------------------------------
+  `float`  | 6 significant digits (usually 32 bits)
+  `double` | 10 significant digits (usually 32 bits)
+
+#### Exercise 2.2: To calculate a mortgage payment, what types would you use for the rate, principal, and payment? Explain why you selected each type.
+
+rate: `float`, principal: `long long`, payment: `long long`.
+
+The rate is usually a floating-point number with 4 significant digits. The principal and payment are integral usually less than 1 trillion.
+
+### 2.1.2 Type Conversions
+
+#### Advice: avoid undefined and implementation-defined behavior
