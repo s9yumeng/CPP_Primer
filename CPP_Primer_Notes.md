@@ -1,35 +1,42 @@
-# Chapter 1 Gettting Started
+## Table of contents
 
-## 1.1 Writing a Simple C++ Program
+1. [Chapter 1 Gettting Started](#chapter-1)
+    - [1.1 Writing a Simple C++ Program](#11-writing-a-simple-c-program)
+    - [1.2 A First Look at Input/Output](#12-a-first-look-at-input/output)
+2. [Chapter 2 Variables and Basic Types](#chapter-2)
+
+## Chapter 1 Gettting Started
+
+### 1.1 Writing a Simple C++ Program
 
 1. A function definition has four elements: a return type, a function name, a (possibly empty) parameter list enclosed in parentheses, and a function body.
-2. The main function is required to have a return type of int, which is a type that represents integers. The int type is a **built-in** type, which means that it is one of the types the language defines.
+2. The main function is required to have a return type of int, which is a type that represents integers. The int type is a **built-in** type, which means that it is one of the types the language defines.**
 3. On most systems, the value returned from main is a status indicator. A return value of 0 indicates success. A nonzero return has a meaning that is defined by the system. Ordinarily a nonzero return indicates what kind of error occurred.
    
-### 1.1.1 Compiling and Executing Our Program
+#### 1.1.1 Compiling and Executing Our Program
 1. Most compilers, including those that come with an IDE, provide a command-line interface. Unless you already know the IDE, you may find it easier to start with the command-line interface. Doing so will let you concentrate on learning C++ first. Moreover, once you understand the language, the IDE is likely to be easier to learn.
 
-#### Program Source File Naming Convention
+**Program Source File Naming Convention**
 `.cpp`
-#### Running the Compiler from the Command Line
+**Running the Compiler from the Command Line**
 `$ ./a.out` `$ echo $?`
-#### Exercises Section 1.1.1
+**Exercises Section 1.1.1**
 1. `clang++ -Wall CPP_Primer_Notes.cpp -o check.out`
 2. The output of `echo $?` command is 255 and the prompt turns red after running the `./check.out` command.
 
-## 1.2 A First Look at Input/Output
+### 1.2 A First Look at Input/Output
 
 Most of the examples in this book use the iostream library. Fundamental to the iostream library are two types named istream and ostream, which repre- sent input and output streams, respectively. A stream is a sequence of characters read from or written to an IO device. The term stream is intended to suggest that the characters are generated, or consumed, sequentially over time.
 
-#### Standard Input and Output Objects
-#### A Program That Uses the IO Library
-#### Writing to a Steam
-#### Using Names from the Standard Library
-#### Reading from a Stream
-#### Completing the Program
+**Standard Input and Output Objects**
+**A Program That Uses the IO Library**
+**Writing to a Steam**
+**Using Names from the Standard Library**
+**Reading from a Stream**
+**Completing the Program**
 The library defines versions of the input and output operators that handle operands of each of these differing types.
 
-#### Exercise 1.3: Write a program to print *Hello, World* on the standard output.
+**Exercise 1.3: Write a program to print *Hello, World* on the standard output.**
 
 Note: When we read a stream statement, it is just like a foldering of the line of the code.
 
@@ -42,7 +49,7 @@ int main()
 }
 ```
 
-#### Exercise 1.4: Our program used the addition operator, +, to add two numbers. Write a program that uses the multiplication operator, *, to print the product instead.
+**Exercise 1.4: Our program used the addition operator, +, to add two numbers. Write a program that uses the multiplication operator, *, to print the product instead.**
 
 ```c++
 #include <iostream>
@@ -57,7 +64,7 @@ int main()
 }
 ```
 
-#### Exercise 1.5: We wrote the output in one large statement. Rewrite the program to use a separate statement to print each operand.
+**Exercise 1.5: We wrote the output in one large statement. Rewrite the program to use a separate statement to print each operand.**
 
 ```c++
 #include <iostream>
@@ -79,14 +86,14 @@ int main()
 }
 ```
 
-#### Exercise 1.6: Explain whether the following program fragment is legal.
+**Exercise 1.6: Explain whether the following program fragment is legal.**
 
 ```c++
 std::cout << "The sum of " << v1; << " and " << v2;
              << " is " << v1 + v2 << std::endl;
 ```
 
-#### If the program is legal, what does it do? If the program is not legal, why not? How would you fix it?
+**If the program is legal, what does it do? If the program is not legal, why not? How would you fix it?**
 
 The program is not legal, the error message is:
 > CPP_Primer_Notes.cpp:7:39: error: expected expression
@@ -102,16 +109,16 @@ The program is not legal, the error message is:
 
 The output operator expect here an *ostream* object as left-hand operand.
 
-## 1.3 A Word about Comments
+### 1.3 A Word about Comments
 
 Although the compiler ignores comments, readers of our code do not. Pro- grammers tend to believe comments even when other parts of the system docu- mentation are out of date. An incorrect comment is worse than no comment at all because it may mislead the reader. When you change your code, be sure to update the comments, too!
 
-#### Kinds of Comments in C++
-#### Comment Pairs Do Not Nest
+**Kinds of Comments in C++**
+**Comment Pairs Do Not Nest**
 
-#### Exercise 1.7: Compile a program that has incorrectly nested comments.
+**Exercise 1.7: Compile a program that has incorrectly nested comments.**
 
-#### Exercise 1.8: Indicate which, if any, of the following output statements are legal:
+**Exercise 1.8: Indicate which, if any, of the following output statements are legal:**
 
 ```c++
 std::cout << "/*";
@@ -133,13 +140,13 @@ CPP_Primer_Notes.cpp:4:23: error: expected expression
 1 warning and 1 error generated.
 ```
 
-## 1.4 Flow of Control
+### 1.4 Flow of Control
 
-### 1.4.1 The `while` Statement
+##### 1.4.1 The `while` Statement
 
 A block is a sequence of zero or more statements enclosed by curly braces. 
 
-#### Exercise 1.9: Write a program that uses a while to sum the numbers from 50 to 100.
+**Exercise 1.9: Write a program that uses a while to sum the numbers from 50 to 100.**
 
 ```c++
 #include <iostream>
@@ -159,7 +166,7 @@ int main()
 }
 ```
 
-#### Exercise 1.10: In addition to the ++ operator that adds 1 to its operand, there is a decrement operator (--) that subtracts 1. Use the decrement operator to write a while that prints the numbers from ten down to zero.
+**Exercise 1.10: In addition to the ++ operator that adds 1 to its operand, there is a decrement operator (--) that subtracts 1. Use the decrement operator to write a while that prints the numbers from ten down to zero.**
 
 ```c++
 #include <iostream>
@@ -178,7 +185,7 @@ int main()
 }
 ```
 
-#### Exercise 1.11: Write a program that prompts the user for two integers. Print each number in the range specified by those two integers.
+**Exercise 1.11: Write a program that prompts the user for two integers. Print each number in the range specified by those two integers.**
 
 ```c++
 #include <iostream>
@@ -208,9 +215,9 @@ int main()
 }
 ```
 
-### 1.4.2 The for Statement
+#### 1.4.2 The for Statement
 
-#### Exercise 1.12: What does the following for loop do? What is the final value of sum?
+**Exercise 1.12: What does the following for loop do? What is the final value of sum?**
 
 ```c++
 int sum = 0;
@@ -232,7 +239,7 @@ int main()
 
 The for loop calculate the sum of the numbers from -100 to 100 inclusive. The final value of sum is obviously 0.
 
-#### Exercise 1.13: Rewrite the first two exercises from § 1.4.1 (p. 13) using for loops.
+**Exercise 1.13: Rewrite the first two exercises from § 1.4.1 (p. 13) using for loops.**
 
 ```c++
 #include <iostream>
@@ -261,15 +268,15 @@ int main()
 }
 ```
 
-#### Exercise 1.14: Compare and contrast the loops that used a for with those using a while. Are there advantages or disadvantages to using either form?
+**Exercise 1.14: Compare and contrast the loops that used a for with those using a while. Are there advantages or disadvantages to using either form?**
 
 `for` has a scope where you can define temporary variables and used inside loop.
 
 `while` is simple and appropriate for situations where the loop time is unknown before the loop.
 
-#### Exercise 1.15: Write programs that contain the common errors discussed in the box on page 16. Familiarize yourself with the messages the compiler generates.
+**Exercise 1.15: Write programs that contain the common errors discussed in the box on page 16. Familiarize yourself with the messages the compiler generates.**
 
-### 1.4.3 Reading an Unknown Number of Inputs
+#### 1.4.3 Reading an Unknown Number of Inputs
 
 ```c++
 #include <iostream>
@@ -295,18 +302,19 @@ There are three points here should be mentioned:
 2. The reason why reading a value that is not an integer can make the state of the istream become invalid is that, `std::cin >> value` and variable value has the type int, so we suppose to provide only integer values to it.
 3. Hit end-of-file here means that the user has hit ^D on the command line to send a EOF signal to the istream.
 
-#### Entering an end-of-file from the keyboard
-#### Compilation revisited
+**Entering an end-of-file from the keyboard**
+**Compilation revisited**
 1. Syntax errors
 2. Type errors
 3. Declaration errors
 
-### 1.4.4 The if Statement
+#### 1.4.4 The if Statement
 
-Like most languages, C++ provides an **if statement** that supports conditional execution. 
+Like most languages, C++ provides an **if statement** that supports conditional execution.
 
 ```c++
 #include <iostream>
+
 int main()
 {
     // currVal is the number we're counting;
@@ -347,27 +355,27 @@ int main()
 }
 ```
 
-#### Exercise 1.17: What happens in the program presented in this section if the input val- ues are all equal? What if there are no duplicated values?
+**Exercise 1.17: What happens in the program presented in this section if the input val- ues are all equal? What if there are no duplicated values?**
 
-#### Exercise 1.18: Compile and run the program from this section giving it only equal values as input. Run it again giving it values in which no number is repeated.
+**Exercise 1.18: Compile and run the program from this section giving it only equal values as input. Run it again giving it values in which no number is repeated.**
 
-#### Exercise 1.19: Revise the program you wrote for the exercises in § 1.4.1 (p. 13) that printed a range of numbers so that it handles input in which the first number is smaller than the second.
+**Exercise 1.19: Revise the program you wrote for the exercises in § 1.4.1 (p. 13) that printed a range of numbers so that it handles input in which the first number is smaller than the second.**
 
-## 1.5 Introducing Classes
+### 1.5 Introducing Classes
 
 To use a class we need to know three things:
 * What is its name?
 * Where is it defined?
 * What operations does it support?
 
-### 1.5.1 The Sales_item Class
+#### 1.5.1 The Sales_item Class
 
 To use a class, we need not care about how it is
 implemented. Instead, what we need to know is what operations objects of that
 type can perform.
 
-#### Reading and Writing `Sales_item`s
-#### Adding `Sales_item`s
+**Reading and Writing `Sales_item`s**
+**Adding `Sales_item`s**
 
 ```c++
 #include <iostream>
@@ -387,7 +395,7 @@ int main()
 
 What makes this similarity noteworthy is the unsimilarity (difference) between these two programs.
 
-#### Exercise 1.20: http://www.informit.com/title/0321714113 contains a copy of Sales_item.h in the Chapter 1 code directory. Copy that file to your working directory. Use it to write a program that reads a set of book sales transactions, writing each transaction to the standard output.
+**Exercise 1.20: http://www.informit.com/title/0321714113 contains a copy of Sales_item.h in the Chapter 1 code directory. Copy that file to your working directory. Use it to write a program that reads a set of book sales transactions, writing each transaction to the standard output.**
 
 ```c++
 #include <iostream>
@@ -406,7 +414,7 @@ int main()
 }
 ```
 
-#### Exercise 1.21: Write a program that reads two Sales_item objects that have the same ISBN and produces their sum.
+**Exercise 1.21: Write a program that reads two Sales_item objects that have the same ISBN and produces their sum.**
 
 ```c++
 #include <iostream>
@@ -428,7 +436,7 @@ int main()
 }
 ```
 
-#### Exercise 1.22: Write a program that reads several transactions for the same ISBN. Write the sum of all the transactions that were read.
+**Exercise 1.22: Write a program that reads several transactions for the same ISBN. Write the sum of all the transactions that were read.**
 
 The key point of this exercise is that, we would not need to save all the read transactions in a suitable data structure, instead of that, we continuously update the sum variable like an end-recursion.
 
@@ -477,7 +485,7 @@ int main()
 }
 ```
 
-### 1.5.2 A First Look at Member Functions
+#### 1.5.2 A First Look at Member Functions
 
 ```c++
 #include <iostream>
@@ -502,9 +510,9 @@ int main()
 }
 ```
 
-#### What Is a Member Function?
+**What Is a Member Function?**
 
-#### Exercise 1.23: Write a program that reads several transactions and counts how many transactions occur for each ISBN.
+**Exercise 1.23: Write a program that reads several transactions and counts how many transactions occur for each ISBN.**
 
 ```c++
 #include <iostream>
@@ -536,13 +544,13 @@ int main()
 }
 ```
 
-#### Exercise 1.24: Test the previous program by giving multiple transactions representing multiple ISBNs. The records for each ISBN should be grouped together.
+**Exercise 1.24: Test the previous program by giving multiple transactions representing multiple ISBNs. The records for each ISBN should be grouped together.**
 
 > The records for each ISBN should be grouped together.
 
 This is just an assumption that the sales transaction file should follow.
 
-## 1.6 The Bookstore Program
+### 1.6 The Bookstore Program
 
 ```c++
 #include <iostream>
@@ -580,18 +588,17 @@ int main()
 }
 ```
 
-#### Exercise 1.25: Using the Sales_item.h header from the Web site, compile and execute the bookstore program presented in this section.
+**Exercise 1.25: Using the Sales_item.h header from the Web site, compile and execute the bookstore program presented in this section.**
 
-# Chapter 2 Variables and Basic Types
+## Chapter 2 Variables and Basic Types
+### 2.1 Primitive Built-in Types
 
-## 2.1 Primitive Built-in Types
-
-### 2.1.1 Arithmetic Types
+#### 2.1.1 Arithmetic Types
 Table 2.1: C++: Arithmetic Types
 
-#### Machine-Level Representation of the Built-In Types
+**Machine-Level Representation of the Built-In Types**
 
-#### Signed and Unsigned Types
+**Signed and Unsigned Types**
 > Unlike the other integer types, there are three distinct basic character types: char,signed char,and unsigned char. Inparticular,char is not the same type as signed char. **Although there are three character types, there are only two representations: signed and unsigned.** The (plain) char type uses one of these representations. Which of the other two character representations is equivalent to char depends on the compiler.
 
 There are three character types in total, but one of them, the char type may be equivalent to either signed char, or unsigned char, depends on the compiler.
@@ -600,9 +607,9 @@ There are three character types in total, but one of them, the char type may be 
 
 e.g. 1'complement or 2'complement number can be used
 
-#### Advice: Deciding Which Type to Use
+**Advice: Deciding Which Type to Use**
 
-#### EXERCISES SECTION 2.1: What are the differences between int, long, long long, and short? Between an unsigned and a signed type? Between a float and a double?
+**EXERCISES SECTION 2.1: What are the differences between int, long, long long, and short? Between an unsigned and a signed type? Between a float and a double?**
 
 1. the number of bits are different
    
@@ -626,12 +633,53 @@ e.g. 1'complement or 2'complement number can be used
   `float`  | 6 significant digits (usually 32 bits)
   `double` | 10 significant digits (usually 32 bits)
 
-#### Exercise 2.2: To calculate a mortgage payment, what types would you use for the rate, principal, and payment? Explain why you selected each type.
+**Exercise 2.2: To calculate a mortgage payment, what types would you use for the rate, principal, and payment? Explain why you selected each type.**
 
 rate: `float`, principal: `long long`, payment: `long long`.
 
 The rate is usually a floating-point number with 4 significant digits. The principal and payment are integral usually less than 1 trillion.
 
-### 2.1.2 Type Conversions
+#### 2.1.2 Type Conversions
 
-#### Advice: avoid undefined and implementation-defined behavior
+**Advice: avoid undefined and implementation-defined behavior**
+> Undefined behavior results from errors that the compiler is not required (and some- times is not able) to detect. Even if the code compiles, a program that executes an undefined expression is in error.
+
+**Expressions Involving Unsigned Types**
+
+**Caution: Don't mix signed and unsigned types**
+
+> It is essential to remember that signed values are automatically converted to unsigned.
+
+**Exercise 2.3: What output will the following code produce?**
+
+```c++
+    unsigned u = 10, u2 = 42;
+    std::cout << u2 - u << std::endl; // 32
+    std::cout << u - u2 << std::endl; // 4294967264, assume that an integer occupies 32 bits
+    int i = 10, i2 = 42;
+    std::cout << i2 - i << std::endl; // 32
+    std::cout << i - i2 << std::endl; // -32
+    std::cout << i - u << std::endl; // 0
+    std::cout << u - i << std::endl; // 0
+```
+
+```c++
+#include <iostream>
+
+int main()
+{
+    unsigned u = 10, u2 = 42;
+    std::cout << u2 - u << std::endl; // 32
+    std::cout << u - u2 << std::endl; // 4294967264, assume that an integer occupies 32 bits
+    int i = 10, i2 = 42;
+    std::cout << i2 - i << std::endl; // 32
+    std::cout << i - i2 << std::endl; // -32
+    std::cout << i - u << std::endl; // 0
+    std::cout << u - i << std::endl; // 0
+    return 0;
+}
+```
+
+**Exercise 2.4: Write a program to check whether your predictions were correct. If not, study this section until you understand what the problem is.**
+
+#### 2.1.3 Literals
