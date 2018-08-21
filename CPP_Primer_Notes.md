@@ -683,3 +683,7 @@ int main()
 **Exercise 2.4: Write a program to check whether your predictions were correct. If not, study this section until you understand what the problem is.**
 
 #### 2.1.3 Literals
+> A value, such as 42, is known as a literal because its value self-evident. Every literal has a type. The form and value of a literal determine its type.
+
+**Integer and Floating-Point Literals**
+
