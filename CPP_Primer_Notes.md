@@ -1,9 +1,27 @@
-## Table of contents
+<!-- TOC -->
 
-1. [Chapter 1 Gettting Started](#chapter-1)
+- [Chapter 1 Gettting Started](#chapter-1-gettting-started)
     - [1.1 Writing a Simple C++ Program](#11-writing-a-simple-c-program)
-    - [1.2 A First Look at Input/Output](#12-a-first-look-at-input/output)
-2. [Chapter 2 Variables and Basic Types](#chapter-2)
+        - [1.1.1 Compiling and Executing Our Program](#111-compiling-and-executing-our-program)
+    - [1.2 A First Look at Input/Output](#12-a-first-look-at-inputoutput)
+    - [1.3 A Word about Comments](#13-a-word-about-comments)
+    - [1.4 Flow of Control](#14-flow-of-control)
+            - [1.4.1 The `while` Statement](#141-the-while-statement)
+        - [1.4.2 The for Statement](#142-the-for-statement)
+        - [1.4.3 Reading an Unknown Number of Inputs](#143-reading-an-unknown-number-of-inputs)
+        - [1.4.4 The if Statement](#144-the-if-statement)
+    - [1.5 Introducing Classes](#15-introducing-classes)
+        - [1.5.1 The Sales_item Class](#151-the-salesitem-class)
+        - [1.5.2 A First Look at Member Functions](#152-a-first-look-at-member-functions)
+    - [1.6 The Bookstore Program](#16-the-bookstore-program)
+- [Chapter 2 Variables and Basic Types](#chapter-2-variables-and-basic-types)
+    - [2.1 Primitive Built-in Types](#21-primitive-built-in-types)
+        - [2.1.1 Arithmetic Types](#211-arithmetic-types)
+        - [2.1.2 Type Conversions](#212-type-conversions)
+        - [2.1.3 Literals](#213-literals)
+    - [2.2 Variables](#22-variables)
+
+<!-- /TOC -->
 
 ## Chapter 1 Gettting Started
 
@@ -703,7 +721,8 @@ For Character and Character String Literals u8's corresponding type is char, whi
 Determine the type of each of the following literals. Explain the differences among the literals in each of the four examples:
 
 ```c++
-int main() {
+int main()
+{
   // (a)
   'a';   // character literal, type is `char`
   L'a';  // wide character literal, type is `wchar_t`
@@ -735,3 +754,59 @@ int main() {
 
 **Eercise 2.6:**
 What, if any, are the differences between the following definitions:
+
+```c++
+int main()
+{
+  int month = 9, day = 7;   // OK
+  int month1 = 09, day1 = 07;
+  /* Error: the digits of octal integral literal
+   * should be within the scope of 0-7
+   */
+
+  return 0;
+}
+```
+
+**Exercise 2.7:**
+What values do these literals represent? What type does each have?
+
+```c++
+int main() {
+    std::cout << "Who goes with F\145rgus?\012";
+    /* output: Who goes with Fergus?
+     * \012 is the line feed character
+     * type: character string literal, containing two octal escape sequences
+     * not a primitive buid-in type
+     */ 
+
+    3.14e1L;  // floating-point literal, type is `long double`
+    1024f;  // floating-point literal, type is `float`
+    3.14L;  // floating-point literal, type is `long double`
+
+  return 0;
+}
+```
+
+**Exercise 2.8:**
+Using escape sequences, write a program to print 2M followed by a newline. Modify the program to print 2, then a tab, then an M, followed by a newline.
+
+```c++
+#include <iostream>
+int main()
+{
+    std::cout << "2\115\12" << std::endl;
+    return 0;
+}
+```
+
+```c++
+#include <iostream>
+int main()
+{
+    std::cout << "2\t\115\12" << std::endl;
+    return 0;
+}
+```
+
+### 2.2 Variables

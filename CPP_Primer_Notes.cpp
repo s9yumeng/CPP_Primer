@@ -2,6 +2,6 @@
 
 int main()
 {
-    std::cout << '\40' << "23"; //
+    std::cout << "2\t\115\12" << std::endl;
     return 0;
 }
