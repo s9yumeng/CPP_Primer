@@ -21,6 +21,7 @@
         - [2.1.3 Literals](#213-literals)
     - [2.2 Variables](#22-variables)
         - [2.2.1 Variable Definitions](#221-variable-definitions)
+        - [2.2.2 Variable Declarations and Definitions](#222-variable-declarations-and-definitions)
 
 <!-- /TOC -->
 
@@ -837,3 +838,15 @@ int main()
 **Initializers**
 
 **List Initialization**
+
+Only list initialization checks for the informaiton loss is for the sake of backward compatibility, otherwise old c++ code would not be able to directly compiled anymore.
+
+**Default Initialization**
+
+> Note: Uninitialized objects of built-in type defined inside a function body have undefined value. Objects of class type that we do not explicitly initialize have a value that is defined by the class.
+
+**Exercise 2.9:** Explain the following definitions. For those that are illegal, explain what’s wrong and how to correct it.
+
+**Exercise 2.10:** What are the initial values, if any, of each of the following variables?
+
+#### 2.2.2 Variable Declarations and Definitions
