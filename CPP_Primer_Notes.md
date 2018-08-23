@@ -20,6 +20,7 @@
         - [2.1.2 Type Conversions](#212-type-conversions)
         - [2.1.3 Literals](#213-literals)
     - [2.2 Variables](#22-variables)
+        - [2.2.1 Variable Definitions](#221-variable-definitions)
 
 <!-- /TOC -->
 
@@ -823,3 +824,14 @@ int main()
 ```
 
 ### 2.2 Variables
+
+> A variable provides us with named storage that our programs can manipulate.
+
+> The type determines the size and layout of the variable’s memory, the range of values that can be stored within that memory, and the set of operations that can be applied to the variable.
+
+#### 2.2.1 Variable Definitions
+
+**Terminology: What is an object?**
+> C++ programmers tend to be cavalier in their use of the term object. Most generally, an object is a region of memory that can contain data and has a type.
+
+**Initializers**
