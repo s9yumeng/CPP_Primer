@@ -22,6 +22,7 @@
     - [2.2 Variables](#22-variables)
         - [2.2.1 Variable Definitions](#221-variable-definitions)
         - [2.2.2 Variable Declarations and Definitions](#222-variable-declarations-and-definitions)
+        - [2.2.3 Identifiers](#223-identifiers)
 
 <!-- /TOC -->
 
@@ -847,6 +848,100 @@ Only list initialization checks for the informaiton loss is for the sake of back
 
 **Exercise 2.9:** Explain the following definitions. For those that are illegal, explain what’s wrong and how to correct it.
 
+```c++
+#include <iostream>
+
+int main () {
+  // (a) std::cin >> int input_value;
+  // Error: variable must be defined before used for input
+  int input_value;
+  std::cin >> input_value;
+
+  // (b) int i = { 3.14 };
+  // Error: loss information in list initialization
+  // warning: implicit conversion from 'double' to 'int'
+     changes value from 3.14 to 3 [-Wliteral-conversion]
+  // so we only get a warning here
+
+  // (c) double salary = wage = 9999.99;
+  // Error: identifier "wage" is undefined
+  double salary, wage;
+  salary = wage = 9999.99;
+
+  // (d) int i = 3.14;
+  // the value of i here is 3
+
+  return 0;
+}
+```
+
 **Exercise 2.10:** What are the initial values, if any, of each of the following variables?
 
+```c++
+#include <string>
+
+std::string global_str; // Empty string object
+int global_int; // 0
+int main() {
+    int local_int; // Undefined value
+    std::string local_str; // Empty string object
+
+    return 0;
+}
+```
+
 #### 2.2.2 Variable Declarations and Definitions
+
+**CAUTION: UNINITIALIZED VARIABLES CAUSE RUN-TIME PROBLEMS**
+
+> It is an error to provide an initializer on an extern inside a function.
+
+This code compiles fine:
+
+```c++
+extern int i = 10;
+
+void test()
+{
+    std::cout << "Hi" << i << std::endl;
+}
+```
+
+While this one gives an error:
+
+```c++
+void test()
+{
+    extern int i = 10;
+    std::cout << "Hi" << i << std::endl;
+}
+```
+
+> error: 'i' has both 'extern' and initializer
+
+By adding an initialiser to the declaration, it becomes a definition of the global variable. It's equivalent to the same definition without extern, which is what your book means when it says it "overrides the extern".
+
+While global variables can be declared (using extern) inside a function, they cannot be defined there, only at namespace scope. That's why the second snippet is an error.
+
+If you want to know why the designers of C (whence these rules came to C++) chose to allow declarations but not definitions here, then I'm afraid I don't know the language's history in enough detail to answer.
+
+**Note:** Since "Variables must be defined exactly once but can be declared many times.", the compiler can always locate the position where the variable is defined, no matter it is inside a function or outside a function scope.
+
+However the designer seems want to make it more clear here, that only global defined variables can be shared across files. Thereby, if a variable is modified by the keyword extern, then it denote that this varible should be global defined and hence cannot be defined locally in a function body.
+
+**Note:** Global defined variables can also be considered as global variables and on the same token, local defined variables refer to local variables actually.
+
+**Exercise 2.11:** Explain whether each of the following is a declaration or a definition:
+
+```c++
+// (a) this is a definition
+extern int ix = 1024;
+// (b) this is a definition
+int iy;
+// (c) this is a declaration
+extern int iz;
+```
+**KEY CONCEPT: STATIC TYPING**
+
+#### 2.2.3 Identifiers
+
