@@ -23,6 +23,7 @@
         - [2.2.1 Variable Definitions](#221-variable-definitions)
         - [2.2.2 Variable Declarations and Definitions](#222-variable-declarations-and-definitions)
         - [2.2.3 Identifiers](#223-identifiers)
+        - [2.2.4 Scope of a Name](#224-scope-of-a-name)
 
 <!-- /TOC -->
 
@@ -945,3 +946,51 @@ extern int iz;
 
 #### 2.2.3 Identifiers
 
+> Identifiers in C++ can be composed of letters, digits, and the underscore character. The language imposes no limit on name length. Identifiers must begin with either a letter or an underscore. Identifiers are case-sensitive; upper- and lowercase letters are distinct:
+
+> Why can't variable names start with numbers?
+
+> Because then a string of digits would be a valid identifier as well as a valid number.
+
+```c++
+int 17 = 497;
+int 42 = 6 * 9;
+String 1111 = "Totally text";
+```
+
+> Well, what if they said variables cannot be only numbers. Then what?
+
+> It'd take me longer to come up with a regular expression for the lexer to pick up identifiers using that rule, if it's even possible, so I can see why no language has ever been implemented that way, in addition to the reasons given in other answers.
+
+> I think the people writing compilers could figure it out...
+
+> If it had to be numbers+alpha, then you could still do String 0x123 = "Hello World". Unless you state that variable names are "numbers+alpha that don't parse to a valid numeric designation".
+
+**Conventions for Variable Names**
+
+> Naming conventions are most useful when followed consistently.
+
+**Exercise 2.12:**
+Which, if any, of the following names are invalid?
+
+```c++
+int _;  // should be an error according to the book, however not
+int main()
+{
+    // (a) error: double is a reserved keyword
+    // for the language's own use
+    int double = 3.14;
+    // (b) _ is a legal identifier
+    int _;
+    // (c) - may not be used in the name of an identifier
+    int catch-22;
+    // (d) error: begin with number
+    int 1_or_2 = 1;
+    // (e) Double is a legal identifier
+    double Double = 3.14;
+
+    return 0;
+}
+```
+
+#### 2.2.4 Scope of a Name
