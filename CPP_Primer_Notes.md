@@ -6,7 +6,7 @@
     - [1.2 A First Look at Input/Output](#12-a-first-look-at-inputoutput)
     - [1.3 A Word about Comments](#13-a-word-about-comments)
     - [1.4 Flow of Control](#14-flow-of-control)
-            - [1.4.1 The `while` Statement](#141-the-while-statement)
+        - [1.4.1 The `while` Statement](#141-the-while-statement)
         - [1.4.2 The for Statement](#142-the-for-statement)
         - [1.4.3 Reading an Unknown Number of Inputs](#143-reading-an-unknown-number-of-inputs)
         - [1.4.4 The if Statement](#144-the-if-statement)
@@ -24,6 +24,7 @@
         - [2.2.2 Variable Declarations and Definitions](#222-variable-declarations-and-definitions)
         - [2.2.3 Identifiers](#223-identifiers)
         - [2.2.4 Scope of a Name](#224-scope-of-a-name)
+    - [2.3 Compound Types](#23-compound-types)
 
 <!-- /TOC -->
 
@@ -177,7 +178,7 @@ CPP_Primer_Notes.cpp:4:23: error: expected expression
 
 ### 1.4 Flow of Control
 
-##### 1.4.1 The `while` Statement
+#### 1.4.1 The `while` Statement
 
 A block is a sequence of zero or more statements enclosed by curly braces. 
 
@@ -950,6 +951,8 @@ extern int iz;
 
 > Why can't variable names start with numbers?
 
+The short answer is: forbid this form of name can ensure the readibility of the code.
+
 > Because then a string of digits would be a valid identifier as well as a valid number.
 
 ```c++
@@ -994,3 +997,120 @@ int main()
 ```
 
 #### 2.2.4 Scope of a Name
+
+**ADVICE: DEFINE VARIABLES WHERE YOU FIRST USE THEM**
+
+**Nested Scopes**
+
+**Warning:**  It is almost always a bad idea to define a local variable with the same name as a global variable that the function uses or might use.
+
+**Exercise 2.13:** What is the value of j in the following program?
+
+```c++
+int i = 42;
+int main()
+{
+    int i = 100;
+    int j = i;
+}
+```
+
+Answer: The value of j is 100, since i declared in the outer scope is redefined in the inner scope with the value 100.
+
+**Exercise 2.14:** Is the following program legal? If so, what values are printed?
+
+```c++
+int i = 100, sum = 0;
+for (int i = 0; i != 10; ++i)
+    sum += i;
+std::cout << i << " " << sum << std::endl;
+```
+
+Answer: It is a legal program and the values printed are `100 45`.
+
+### 2.3 Compound Types
+
+> A compound type is a type that is defined in terms of another type. C++ has several compound types, two of which—references and pointers—we’ll cover in this chapter.
+
+**Exercise 2.15:** Which of the following definitions, if any, are invalid? Why?
+
+```c++
+int main()
+{
+    // (a) this definition is valid
+    int ival = 1.01;
+
+    /* (b) this definition is invalid,
+     *     because a reference may be bound only to an object,
+     *     not to a literal 
+     */
+    int &rval1 = 1.01; // error: initializer must be an object
+
+    // (c) this definition is valid
+    int &rval2 = ival;
+
+    // (d) error: a reference must be initialized when defined
+    int &rval3;
+
+  return 0;
+}
+```
+
+**Exercise 2.16:** Which, if any, of the following assignments are invalid? If they are valid, explain what they do.
+
+```c++
+int main()
+{
+  int i = 0, &r1 = i;
+  double d = 0, &r2 = d;
+
+  r2 = 3.14159;  // (a) d = 3.14159
+  r2 = r1;  // (b) d = i
+  i = r2;  // (c) i = d
+  r1 = d;  // (d) i = d
+
+  return 0;
+}
+```
+
+```c++
+#include <iostream>
+int main()
+{
+    int i = 0, &r1 = i;
+    double d = 0, &r2 = d;
+
+    std::cout << "the values of i, r1, d, r2 are: "
+                << i << " " << r1 << " " << d << " " << r2 << " " << std::endl;
+    r2 = 3.14159;  // (a) d = 3.14159
+    std::cout << "(a) the values of i, r1, d, r2 are: "
+                << i << " " << r1 << " " << d << " " << r2 << " " << std::endl;
+    r2 = r1;  // (b) d = i
+    std::cout << "(b) the values of i, r1, d, r2 are: "
+                << i << " " << r1 << " " << d << " " << r2 << " " << std::endl;
+    i = r2;  // (c) i = d
+    std::cout << "(c) the values of i, r1, d, r2 are: "
+                << i << " " << r1 << " " << d << " " << r2 << " " << std::endl;
+    r1 = d;  // (d) i = d
+    std::cout << "(d) the values of i, r1, d, r2 are: "
+                << i << " " << r1 << " " << d << " " << r2 << " " << std::endl;
+
+    return 0;
+}
+```
+
+> the values of i, r1, d, r2 are: 0 0 0 0\
+(a) the values of i, r1, d, r2 are: 0 0 3.14159 3.14159\
+(b) the values of i, r1, d, r2 are: 0 0 0 0\
+(c) the values of i, r1, d, r2 are: 0 0 0 0\
+(d) the values of i, r1, d, r2 are: 0 0 0 0
+
+
+**Exercise 2.17:** What does the following code print?
+```c++
+    int i, &ri = i;
+    i = 5; ri = 10;
+    std::cout << i << " " << ri << std::endl;
+```
+
+Answer: `10 10`.
