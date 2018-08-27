@@ -678,7 +678,7 @@ The rate is usually a floating-point number with 4 significant digits. The princ
 #### 2.1.2 Type Conversions
 
 **Advice: avoid undefined and implementation-defined behavior**
-> Undefined behavior results from errors that the compiler is not required (and some- times is not able) to detect. Even if the code compiles, a program that executes an undefined expression is in error.
+> Undefined behavior results from errors that the compiler is not required (and sometimes is not able) to detect. Even if the code compiles, a program that executes an undefined expression is in error.
 
 **Expressions Involving Unsigned Types**
 
