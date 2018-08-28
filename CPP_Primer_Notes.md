@@ -1114,3 +1114,110 @@ int main()
 ```
 
 Answer: `10 10`.
+
+3. 允许对指针赋值和拷贝
+pointer correspond to assember address label and can be compared with java ref
+不能够引用常量 是因为内存会被回收
+the definition of object
+pi2 points to ival so its value is not zero the condition is true
+
+**Exercise 2.18:** Write code to change the value of a pointer. Write code to change the value to which the pointer points.
+
+```c++
+#include <iostream>
+
+int main()
+{
+    int i, j = 0;
+    int *ip = &i;
+
+    *ip = 10;
+    std::cout << i << " " << *ip << std::endl; // 10 10
+    i = 5;
+    std::cout << i << " " << *ip << std::endl; // 5 5
+
+    ip = &j;
+    std::cout << j << " " << *ip << std::endl; // 0 0
+
+    return 0;
+}
+```
+**Exercise 2.19:** Explain the key differences between pointers and references.
+
+**Answer:**
+
+A pointer is an object whose value is the adress of another object.
+
+A reference is not an object. It is an alias of another object.
+
+**Exercise 2.20:** What does the following program do?
+
+```c++
+int i = 42;
+int *p1 = &i;
+*p1 = *p1 * *p1;
+```
+
+```c++
+#include <iostream>
+
+int main()
+{
+    int i = 42;
+    int *p1 = &i;
+    *p1 = *p1 * *p1; // i = i * i
+    std::cout << i << std::endl; // 1764
+
+    return 0;
+}
+```
+
+
+**Exercise 2.21:** Explain each of the following definitions. Indicate whether any are illegal and, if so, why.
+
+```c++
+int i = 0;
+// (a) error: 'dp' can only hold pointer that points to 'double' type variable
+double* dp = &i;
+// (b) error: cannot initialize a variable of type 'int *' with an lvalue of type 'int'
+//     a pointer can only hold an address of object
+int *ip = i;
+// (c) this is a legal definition
+int *p = &i;
+```
+
+**Exercise 2.22:** Assuming p is a pointer to int, explain the following code:
+
+```c++
+if (p) // ...
+if (*p) // ...
+```
+
+**Answer:**
+
+`if (p)` means if the pointer p is not a nullpointer
+
+`if (*p)` means if the value, to which the pointer points, is not false or will not be considered as false
+
+**Exercise 2.23:** Given a pointer p, can you determine whether p points to a valid object? If so, how? If not, why not?
+
+**Answer:**
+> No, you can't. Why? Because it would be expensive to maintain meta data about what constitutes a valid pointer and what doesn't, and in C++ you don't pay for what you don't want.
+
+> And you don't want to check whether a pointer is valid, because you know where a pointer comes from, either because it's a private part of your code that you control, or because you specified it in your external-facing contracts.
+
+See answer [here](https://stackoverflow.com/a/17202622).
+
+However, a _smart_ pointer can be used to tell if it points to a valid value.
+
+**Exercise 2.24:** Why is the initialization of p legal but that of lp illegal?
+
+```c++
+int i = 42;
+// the initialization of p is legal
+// because that a 'void *' pointer can point to any type 
+void *p = &i;
+// the initialization of lp is illegal
+// since that a 'long *' pointer can not point to 'int'
+long *lp = &i;
+```
