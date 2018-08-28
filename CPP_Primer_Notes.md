@@ -1134,12 +1134,12 @@ int main()
 }
 ```
 
-> the values of i, r1, d, r2 are: 0 0 0 0\
+> the output is:\
+the values of i, r1, d, r2 are: 0 0 0 0\
 (a) the values of i, r1, d, r2 are: 0 0 3.14159 3.14159\
 (b) the values of i, r1, d, r2 are: 0 0 0 0\
 (c) the values of i, r1, d, r2 are: 0 0 0 0\
 (d) the values of i, r1, d, r2 are: 0 0 0 0
-
 
 **Exercise 2.17:** What does the following code print?
 ```c++
@@ -1150,11 +1150,47 @@ int main()
 
 Answer: `10 10`.
 
-3. 允许对指针赋值和拷贝
-pointer correspond to assember address label and can be compared with java ref
-pi2 points to ival so its value is not zero the condition is true
-
 #### 2.3.2 Pointers
+
+> Pointers can be assigned and copied; a single pointer can point to several different objects over its lifetime.
+
+The "copy" refers to clone() in Java.
+
+> Unlike a reference, a pointer need not be initialized at the time it is defined. Like other built-in types, pointers defined at block scope have undefined value if they are not initialized.
+
+**Taking the Address of an Object**
+
+> A pointer holds the address of another object. We get the address of an object by usin the address-of operator (the **& operator**):
+
+```c++
+int ival = 42;
+int *p = &ival; // p holds the address of 'ival'; p is a pointer to 'ival'
+```
+
+> Because references are not objects, they don’t have addresses. Hence, we may not define a pointer to a reference.
+
+> With two exceptions, which we cover in § 2.4.2 (p. 62) and § 15.2.3 (p. 601), the types of the pointer and the object to which it points must match:
+
+(just like references)
+
+```c++
+double dval;
+double *pd = &dval; // ok: initializer is the address of a 'double'
+double *pd2 = pd; // ok: initializer is a pointer to 'double'
+
+int *pi = pd; // error: types of 'pi' and 'pd' differ
+pi = &dval; // error: assigning the address of a 'double' to a pointer to 'int'
+```
+
+> The types must match because the type of the pointer is used to infer the type of the object to which the pointer points. If a pointer addressed an object of another type, operations performed on the underlying object would fail.
+
+In assembly language, the counterpart of the pointer is the (address) label in data segment.
+
+In Java we don't have such concept like pointer, however we do have reference to object.
+
+**Pointer Value**
+
+pi2 points to ival so its value is not zero the condition is true
 
 **Exercise 2.18:** Write code to change the value of a pointer. Write code to change the value to which the pointer points.
 
@@ -1206,7 +1242,6 @@ int main()
     return 0;
 }
 ```
-
 
 **Exercise 2.21:** Explain each of the following definitions. Indicate whether any are illegal and, if so, why.
 
