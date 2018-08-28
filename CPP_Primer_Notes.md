@@ -25,6 +25,8 @@
         - [2.2.3 Identifiers](#223-identifiers)
         - [2.2.4 Scope of a Name](#224-scope-of-a-name)
     - [2.3 Compound Types](#23-compound-types)
+        - [2.3.1 References](#231-references)
+        - [2.3.2 Pointers](#232-pointers)
 
 <!-- /TOC -->
 
@@ -1032,6 +1034,39 @@ Answer: It is a legal program and the values printed are `100 45`.
 
 > A compound type is a type that is defined in terms of another type. C++ has several compound types, two of which—references and pointers—we’ll cover in this chapter.
 
+> More generally, a declaration is a base type followed by a list of declarators. Each declarator names a variable and gives the variable a type that is related to the base type.
+
+#### 2.3.1 References
+
+**Note:**
+The new standard introduced a new kind of reference: an “rvalue reference,” which we’ll cover in § 13.6.1 (p. 532). These references are primarily intended for use inside classes. Technically speaking, when we use the term reference, we mean “lvalue reference.”
+
+**A Reference Is an Alias**
+
+**Note:** A reference is not an object. Instead, a reference is _just another name for an already existing object_.
+
+**The definition of an object**
+
+In this book, we’ll follow the more general usage that an *object* is a region of memory that can contain data and has a type.
+
+> Because references are not objects, we may not define a reference to a reference.
+
+**Reference Definitions**
+
+> With two exceptions that we’ll cover in § 2.4.1 (p. 61) and § 15.2.3 (p. 601), the type of a reference and the object to which the reference refers must match exactly.
+
+> Moreover, for reasons we’ll explore in § 2.4.1, a reference may be bound only to an object, not to a literal or to the result of a more general expression:
+
+```c++
+int &refVal4 = 10; // error: initializer must be an object
+
+double dval = 3.14;
+
+int &refVal5 = dval; // error: initializer must be an 'int' object
+```
+
+One reason why a reference may not be bound to a literal is that, normally literal does not occupy any memory space to which the reference can refer.
+
 **Exercise 2.15:** Which of the following definitions, if any, are invalid? Why?
 
 ```c++
@@ -1117,9 +1152,9 @@ Answer: `10 10`.
 
 3. 允许对指针赋值和拷贝
 pointer correspond to assember address label and can be compared with java ref
-不能够引用常量 是因为内存会被回收
-the definition of object
 pi2 points to ival so its value is not zero the condition is true
+
+#### 2.3.2 Pointers
 
 **Exercise 2.18:** Write code to change the value of a pointer. Write code to change the value to which the pointer points.
 
