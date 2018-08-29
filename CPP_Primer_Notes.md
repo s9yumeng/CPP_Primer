@@ -1190,6 +1190,98 @@ In Java we don't have such concept like pointer, however we do have reference to
 
 **Pointer Value**
 
+> The value (i.e., the address) stored in a pointer can be in one of four states:
+
+> 1. It can point to an object.
+> 2. It can point to the location just immediately past the end of an object.
+> 3. It can be a null pointer, indicating that it is not bound to any object.
+> 4. It can be invalid; values other than the preceding three are invalid.
+
+**Note:** What is pointer past the end of an object means?
+
+It means that after
+
+```c++
+int a[] = { 1, 2 };
+float b;
+```
+
+it's possible that `(void *) &a[2] == (void *) &b` may compare as true.
+
+`&a[2]` (or equivalently, `a+2`) is a pointer just past the end of `a`, because the array only contains elements with indices 0 and 1.
+
+Normally, out-of-range array indices are completely invalid (accessing `a[2]` is not allowed, nor is even computing `&a[3]`), but there is a special exception for computing the address just past the end of an array, because as it turned out, that is quite useful, for example when iterating over an array and you need an end value to know when to stop the loop.
+
+See the question [here](https://stackoverflow.com/q/21850108).
+
+> It is an error to copy or otherwise try to access the value of an invalid pointer.
+
+> The result of accessing an invalid pointer is undefined.
+
+> Although pointers in cases 2 and 3 are valid, there are limits on what we can do with such pointers. Because these pointers do not point to any object, we may not use them to access the (supposed) object to which the pointer points. If we do attempt to access an object through such pointers, the behavior is undefined.
+
+**Using a Pointer to Access an Object**
+
+> When a pointer points to an object, we can use the dereference operator (the **\* operator**) to access that object:
+
+```c++
+int ival = 42;
+int *p = &ival; // 'p' holds the address of 'ival'; 'p' is a pointer to 'ival'
+count << *p; // '*' yields the object to which p points; prints 42
+```
+
+> Dereferencing a pointer yields the object to which the pointer points.
+
+> **Note:** We may dereference only a valid pointer that points to an object.
+
+> **Key Concept:** Some symbols have multiple meanings
+
+> The context in which a symbol is used determines what the symbol means.
+
+> In declarations, & and * are used to form compound types. In expressions, these same symbols are used to denote an operator. Because the same symbol is used with very different meanings, it can be helpful to ignore appearances and think of them as if they were different symbols.
+
+**Null Pointers**
+
+> A **null pointer** does not point to any object. Code can check whether a pointer is null before attempting to use it. There are several ways to obtain a null pointer:
+
+```c++
+int *p1 = nullptr; // equivalent to 'int *p1 = 0;'
+int *p2 = 0; //directly initializes 'p2' from the literal constant '0'
+// must #include cstdlib
+int *p3 = NULL; // equivalent to int *p3 = 0;
+```
+
+> The most direct approach is to initialize the pointer using the literal nullptr, which was introduced by the new standard. nullptr is a literal that has a special type that can be converted (§ 2.1.2, p. 35) to any other pointer type. Alternatively, we can initialize a pointer to the literal 0, as we do in the definition of p2.
+
+> Modern C++ programs generally should avoid using NULL and use nullptr instead.
+
+> It is illegal to assign an int variable to a pointer, even if the variable’s value happens to be 0.
+
+```c++
+int zero = 0;
+pi = zero; // error: cannot assign an 'int' to a pointer
+```
+
+**Advice:** Initialize All Pointers
+
+> Our recommendation to initialize all variables is particularly important for point- ers. If possible, define a pointer only after the object to which it should point has been defined. If there is no object to bind to a pointer, then initialize the pointer to nullptr or zero. That way, the program can detect that the pointer does not point to an object.
+
+In Java, all uninitialized variables are default-initalized as null reference, just like null pointer in C++. For example:
+
+```java
+Integer i;
+```
+
+**Assignment and Pointers**
+
+> Both pointers and references give indirect access to other objects. However, there are important differences in how they do so. The most important is that a reference is not an object.
+
+> It can be hard to keep straight whether an assignment changes the pointer or the object to which the pointer points. The important thing to keep in mind is that assignment changes its left-hand operand.
+
+**Other Pointer Operations**
+
+> So long as the pointer has a valid value, we can use a pointer in a condition.
+
 pi2 points to ival so its value is not zero the condition is true
 
 **Exercise 2.18:** Write code to change the value of a pointer. Write code to change the value to which the pointer points.
