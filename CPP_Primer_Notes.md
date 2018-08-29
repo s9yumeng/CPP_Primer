@@ -27,6 +27,7 @@
     - [2.3 Compound Types](#23-compound-types)
         - [2.3.1 References](#231-references)
         - [2.3.2 Pointers](#232-pointers)
+        - [2.3.3 Understanding Compound Type Declaration](#233-understanding-compound-type-declaration)
 
 <!-- /TOC -->
 
@@ -1282,7 +1283,38 @@ Integer i;
 
 > So long as the pointer has a valid value, we can use a pointer in a condition.
 
-pi2 points to ival so its value is not zero the condition is true
+> So long as the pointer has a valid value, we can use a pointer in a condition. Just as when we use an arithmetic value in a condition (§ 2.1.2, p. 35), if the pointer is 0, then the condition is `false`:
+
+```c++
+int ival = 1024;
+int *pi = 0; // 'pi' is a valid, null pointer
+int *pi2 = &ival; // 'pi2' is a valid pointer that holds the address of 'ival'
+if (pi) // 'pi' has value 0, so condition evaluates as 'false'
+    // ...
+if (pi2) // 'pi2' points to 'ival', so it is not 0; the condition evaluates as 'true'
+    // ...
+```
+
+> Any nonzero pointer evaluates as `true`
+
+**Note:** If a pointer points to an object, then its value is nonzero. Zero is not an address of any object.
+
+> Given two valid pointers of the same type, we can compare them using the equality (`==`) or inequality (`!=`) operators. The result of these operators has type `bool`. Two pointers are equal if they hold the same address and unequal otherwise.
+
+> Note that it is possible for a pointer to an object and a pointer one past the end of a different object to hold the same address. Such pointers will compare equal.
+
+> Because these operations use the value of the pointer, a pointer used in a condition or in a comparison must be a valid pointer. Using an invalid pointer as a condition or in a comparison is undefined behaviour.
+
+**void\* Pointers**
+
+> The type **void\*** is a special pointer type that can hold the address of any object. Like any other pointer, a void* pointer holds an address, but the type of the object at that address is unknown:
+
+```c++
+double obj = 3.14, *pd = &obj;
+// ok: 'void*' can hold the address value of any data pointer type
+void *pv = &obj; // 'obj' can be an object of any type
+pv = pd; // 'pv' can hold a pointer to any type
+```
 
 **Exercise 2.18:** Write code to change the value of a pointer. Write code to change the value to which the pointer points.
 
@@ -1383,3 +1415,5 @@ void *p = &i;
 // since that a 'long *' pointer can not point to 'int'
 long *lp = &i;
 ```
+
+#### 2.3.3 Understanding Compound Type Declaration
