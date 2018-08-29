@@ -28,6 +28,7 @@
         - [2.3.1 References](#231-references)
         - [2.3.2 Pointers](#232-pointers)
         - [2.3.3 Understanding Compound Type Declaration](#233-understanding-compound-type-declaration)
+    - [2.4 `const` Qualifier](#24-const-qualifier)
 
 <!-- /TOC -->
 
@@ -1427,6 +1428,14 @@ long *lp = &i;
 > In this book we use the first style and place the * (or the &) with the variable name.
 
 **Pointers to Pointers**
+
+**References to Pointers**
+
+> The easiest way to understand the type of r is to read the definition right to left.
+
+**Tip:**  It can be easier to understand complicated pointer or reference declarations if you read them from right to left.
+
+### 2.4 `const` Qualifier
 
 **Exercise 2.25:** Determine the types and values of each of the following variables.
 
