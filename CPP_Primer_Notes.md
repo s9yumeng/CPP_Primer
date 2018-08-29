@@ -1417,3 +1417,45 @@ long *lp = &i;
 ```
 
 #### 2.3.3 Understanding Compound Type Declaration
+
+**Exercise 2.25:** Determine the types and values of each of the following variables.
+
+```c++
+#include <iostream>
+
+int main()
+{
+    // Note that 'typeid' will lose the 'const' qualifier and reference
+
+    // (a) 'ip' is a pointer which points to int, 'i' is 'int', r is a reference to i
+    // We don't know the value of ip.
+    // The values of i and r should be the same.
+    {
+      int* ip, i, &r = i;
+      std::cout << "(a)" << std::endl;
+      std::cout << "ip\t" << typeid(ip).name() << std::endl;
+      std::cout << "i\t" << typeid(i).name() << std::endl;
+      std::cout << "r\t" << typeid(r).name() << std::endl;
+    }
+
+    // (b) 'i' is 'int', 'ip' is a pointer which points to 'int'
+    // We don't know the value of i.
+    // ip is a null pointer, so its value is 0.
+    {
+        int i, *ip = 0;
+        std::cout << "(b)" << std::endl;
+        std::cout << "i\t" << typeid(i).name() << std::endl;
+        std::cout << "ip\t" << typeid(ip).name() << std::endl;
+    }
+
+    // (c) 'ip' is a pointer to 'int', 'ip2' is an 'int'
+    {
+        int* ip, ip2;
+        std::cout << "(c)" << std::endl;
+        std::cout << "ip\t" << typeid(ip).name() << std::endl;
+        std::cout << "ip2\t" << typeid(ip2).name() << std::endl;
+    }
+
+    return 0;
+}
+```
