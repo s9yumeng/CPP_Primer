@@ -1400,7 +1400,7 @@ if (*p) // ...
 
 > And you don't want to check whether a pointer is valid, because you know where a pointer comes from, either because it's a private part of your code that you control, or because you specified it in your external-facing contracts.
 
-See answer [here](https://stackoverflow.com/a/17202622).
+See the answer [here](https://stackoverflow.com/a/17202622).
 
 However, a _smart_ pointer can be used to tell if it points to a valid value.
 
@@ -1417,6 +1417,16 @@ long *lp = &i;
 ```
 
 #### 2.3.3 Understanding Compound Type Declaration
+
+**Warning:**  Many programmers are confused by the interaction between the base type and the type modification that may be part of a declarator.
+
+**Defining Multiple Variables**
+
+**Tip:**  There is no single right way to define pointers or references. The important thing is to choose a style and use it consistently.
+
+> In this book we use the first style and place the * (or the &) with the variable name.
+
+**Pointers to Pointers**
 
 **Exercise 2.25:** Determine the types and values of each of the following variables.
 
