@@ -1435,8 +1435,6 @@ long *lp = &i;
 
 **Tip:**  It can be easier to understand complicated pointer or reference declarations if you read them from right to left.
 
-### 2.4 `const` Qualifier
-
 **Exercise 2.25:** Determine the types and values of each of the following variables.
 
 ```c++
@@ -1478,3 +1476,9 @@ int main()
     return 0;
 }
 ```
+
+### 2.4 `const` Qualifier
+
+> Using a variable makes it easy for us to change the size of the buffer if we decided the original size wasn’t what we needed. 
+
+Note: This is one advantage of the usage of a variable, namely, one can change the value of a variable at one place and it will automatically generate multiple modifications in many places for us simultaneously.
